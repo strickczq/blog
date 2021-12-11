@@ -1,0 +1,38 @@
+html,
+body,
+#app {
+  @apply h-full;
+}
+
+html {
+  scroll-padding-top: 64px;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-page;
+}
+
+#app {
+  @apply flex flex-col;
+}
+
+#nprogress {
+  @apply pointer-none;
+}
+
+#nprogress .bar {
+  @apply bg-accent opacity-75 fixed z-50 top-0 inset-x-0 h-0.5;
+}
+
+.gradient {
+  background: conic-gradient(
+    at left bottom,
+    rgb(156, 163, 175),
+    rgb(22, 101, 52),
+    rgb(229, 229, 229)
+  );
+}

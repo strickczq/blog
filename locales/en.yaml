@@ -1,0 +1,25 @@
+button:
+  home: Home
+  tags: Tags
+  about: About
+  links: Links
+  back: Back
+  go: GO
+  toggle-lang: Toggle English/Chinese
+  toggle-mode: Toggle Color mode
+post:
+  created-at: Created {time}
+  updated-at: Updated {time}
+footer:
+  powered-by: Powered by
+home:
+  title: Heyyyy!
+  desc: Welcome to my blog!
+not-found: Not found
+tag:
+  blog: Blog
+  backend: Backend
+  frontend: Frontend
+  markdown: Markdown
+  vue: Vue
+outline: Outline

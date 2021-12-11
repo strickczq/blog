@@ -1,0 +1,25 @@
+button:
+  home: 首页
+  tags: 标签
+  about: 关于
+  links: 友链
+  back: 返回
+  go: 确定
+  toggle-lang: 切换中英文
+  toggle-mode: 切换颜色模式
+post:
+  created-at: 创建于 {time}
+  updated-at: 更新于 {time}
+footer:
+  powered-by: 动力源自
+home:
+  title: 嗨～
+  desc: 欢迎来到我的博客！
+not-found: 未找到页面
+tag:
+  blog: 博客
+  backend: 后端
+  frontend: 前端
+  markdown: Markdown
+  vue: Vue
+outline: 大纲

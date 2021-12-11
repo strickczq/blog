@@ -1,0 +1,31 @@
+diff --git a/dist/index.cjs.js b/dist/index.cjs
+similarity index 100%
+rename from dist/index.cjs.js
+rename to dist/index.cjs
+diff --git a/dist/index.es.js b/dist/index.mjs
+similarity index 100%
+rename from dist/index.es.js
+rename to dist/index.mjs
+diff --git a/package.json b/package.json
+index e855e57937bfeb1530d31542cc3527dd68d5f11c..fcee2eeb99ddbe71114e2ef800069f982b2e3d81 100644
+--- a/package.json
++++ b/package.json
+@@ -1,14 +1,14 @@
+ {
+   "name": "@giscus/vue",
+   "version": "2.2.0",
+-  "main": "dist/index.cjs.js",
+-  "module": "dist/index.es.js",
++  "main": "dist/index.cjs",
++  "module": "dist/index.mjs",
+   "types": "dist/index.d.ts",
+   "exports": {
+     ".": {
+       "types": "./dist/index.d.ts",
+-      "require": "./dist/index.cjs.js",
+-      "import": "./dist/index.es.js"
++      "require": "./dist/index.cjs",
++      "import": "./dist/index.mjs"
+     }
+   },
+   "files": [
