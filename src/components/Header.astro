@@ -1,0 +1,50 @@
+---
+import { getLocale, getLocalePath, switchLocalePath, t } from 'i18n:astro'
+
+const locale = getLocale()
+const nextLocale = locale === 'zh' ? 'en' : 'zh'
+---
+
+<header class="fixed top-0 inset-x-0 z-10 flex flex-row items-center h-12 px-4 md:px-6 backdrop-blur-md border-b border-ui-separator">
+  <div class="absolute inset-0 z--1 bg-ui-page opacity-80" />
+
+  <nav class="flex flex-row gap-2 items-center text-sm">
+    {
+      (["home", "about", "friends"] as const).map((item) => (
+        <a
+          href={item == 'home' ? getLocalePath('/') : getLocalePath(`/${item}`)}
+          class="px-2 py-1.5 rounded-md hover:bg-ui-hover"
+        >
+          {t(`nav.${item}`)}
+        </a>
+      ))
+    }
+  </nav>
+
+  <nav class="ml-auto flex flex-row gap-1 items-center">
+    <buton
+      aria-label="Toggle theme"  
+      id="toggle-theme"
+      class="p-2 rounded-md hover:bg-ui-hover"
+    >
+      <div class="i-uil-sun dark:i-uil-moon" />
+    </buton>
+    <a
+      aria-label="Change language"
+      class="p-2 rounded-md hover:bg-ui-hover"
+      href={switchLocalePath(nextLocale)}
+    >
+      {locale === 'zh' && <div class="i-uil-letter-chinese-a" />}
+      {locale === 'en' && <div class="i-uil-letter-english-a" />}
+    </a>
+  </nav>
+</header>
+
+<script>
+  import { toggleTheme } from '~/stores/theme'
+
+  document.addEventListener('astro:page-load', () => {
+    document.querySelector('#toggle-theme')
+      ?.addEventListener('click', () => toggleTheme())
+  })
+</script>

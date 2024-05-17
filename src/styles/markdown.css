@@ -1,0 +1,147 @@
+@unocss;
+
+.markdown {
+  @apply break-words font-sans leading-6 text-ui-label;
+}
+
+.markdown h1 {
+  @apply mt-9 mb-6 text-3xl;
+}
+
+.markdown h2 {
+  @apply mt-9 mb-6 text-2xl;
+}
+
+.markdown h3 {
+  @apply mt-6 mb-4 text-xl;
+}
+
+.markdown h4 {
+  @apply mt-6 mb-4 text-lg;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  @apply relative font-bold;
+}
+
+.markdown h1 > .header-anchor,
+.markdown h2 > .header-anchor,
+.markdown h3 > .header-anchor,
+.markdown h4 > .header-anchor {
+  @apply absolute w-6 left--6 opacity-0 transition;
+}
+
+.markdown h1:hover > .header-anchor,
+.markdown h2:hover > .header-anchor,
+.markdown h3:hover > .header-anchor,
+.markdown h4:hover > .header-anchor {
+  @apply opacity-100;
+}
+
+.markdown p {
+  @apply mt-4 mb-2 text-base;
+}
+
+.markdown small {
+  @apply text-sm;
+}
+
+.markdown ul {
+  @apply list-disc;
+}
+
+.markdown ol {
+  @apply list-decimal;
+}
+
+.markdown ul.contains-task-list {
+  @apply list-none;
+}
+
+.markdown ul,
+.markdown ol {
+  @apply list-inside;
+}
+
+.markdown ul li,
+.markdown ol li {
+  @apply mb-2 text-base;
+}
+
+.markdown ul li ul,
+.markdown ul li ol,
+.markdown ol li ul,
+.markdown ol li ol {
+  @apply ml-6;
+}
+
+.markdown ul li input[type='checkbox'] {
+  @apply h-4 w-4 appearance-none align-middle;
+}
+
+.markdown ul li p {
+  @apply my-0 inline-block;
+}
+
+.markdown p code,
+.markdown li code {
+  @apply mx-0.25 px-1 py-0.25 text-sm font-mono bg-ui-card;
+  @apply rounded-md border border-solid border-ui-separator;
+}
+
+.markdown pre {
+  @apply mb-4 rounded-md bg-ui-card p-4;
+}
+
+.markdown pre code {
+  @apply font-mono text-sm overflow-x-auto;
+}
+
+.markdown blockquote {
+  @apply relative mb-4 rounded-md px-4 py-3;
+}
+
+.markdown blockquote h1,
+.markdown blockquote h2,
+.markdown blockquote h3,
+.markdown blockquote h4,
+.markdown blockquote p {
+  @apply my-0;
+}
+
+.markdown blockquote::before {
+  @apply absolute inset-y-2 left-0 w-1 border-2 rounded-full text-2xl font-bold;
+  content: '';
+}
+
+.markdown a {
+  @apply text-ui-link hover:text-ui-link-hover no-underline;
+}
+
+.markdown table {
+  @apply w-full table-auto;
+}
+
+.markdown table th,
+.markdown table td {
+  @apply px-2 py-1 text-left border border-solid border-ui-separator;
+}
+
+strong {
+  @apply font-bold;
+}
+
+em {
+  @apply italic;
+}
+
+del {
+  @apply line-through;
+}
+
+hr {
+  @apply mt-2 mb-4 border-ui-separator;
+}

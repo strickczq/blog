@@ -1,0 +1,41 @@
+---
+import { t } from 'i18n:astro'
+
+import MainLayout from '~/layouts/MainLayout.astro'
+import { site } from '~/lib/consts'
+---
+
+<MainLayout title={t('nav.about')} description="">
+  <section>
+    <article class="markdown">
+      <section>
+        <h1>友链</h1>
+        <p>朋友们的博客</p>
+      </section>
+    </article>
+  </section>
+
+  <section class="mt-4">
+    <ul class="flex flex-col gap-6">
+      {
+        site.friends.map(friend => (
+          <li>
+            <a href={friend.url} target="_blank">
+              <div class="card flex flex-row gap-2 md:gap-4 p-4 md:p-8">
+                <img src={friend.favicon} alt="Favicon" class="w-12 h-12 rounded-full" />
+                <div class="flex flex-col">
+                  <span class="font-bold line-clamp-1 flex-1 mr-2">
+                    {friend.name}
+                  </span>
+                  <span class="text-sm line-clamp-2 flex-1 mr-2">
+                    {friend.description}
+                  </span>
+                </div>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</MainLayout>

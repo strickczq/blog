@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets'
+import { t } from 'i18n:astro'
+
+import favicon from '~/assets/favicon.webp'
+import MainLayout from '~/layouts/MainLayout.astro'
+import { site } from '~/lib/consts'
+---
+
+<MainLayout title={t('nav.about')} description="">
+  <article class="markdown">
+    <section>
+      <h1>关于</h1>
+      <p>欢迎来到 Strick 的小站～</p>
+      <p>
+        本博客已开源在
+        <a target="_blank" href="https://github.com/strickczq/blog">GitHub</a>
+        ，详情见
+        <a href="/posts/blog-init">这篇博文</a>
+        。
+      </p>
+    </section>
+
+    <section class="relative mt-4">
+      <h2>我</h2>
+      <Image
+        class="absolute top-8 right-0 rounded-full w-24 h-24"
+        src={favicon}
+        width={96}
+        height={96}
+        alt="Avatar"
+      />
+      <p><code>Strick</code> 是我的网名</p>
+      <p>目前是深大计算机在读</p>
+    </section>
+  </article>
+
+  <section class="relative">
+    <article class="markdown">
+      <h3>联系</h3>
+    </article>
+    <div class="flex flex-row gap-3 flex-wrap text-sm">
+      <a target="_blank" href={`mailto:${site.contact.email}`} title="Email">
+        <span class="flex flex-row gap-2 px-3 py-2 rounded-full items-center bg-ui-card hover:bg-ui-hover">
+          <div class="i-eva-email-outline text-xl" />
+          Email
+        </span>
+      </a>
+      <a target="_blank" href={site.contact.telegram} title="Telegram">
+        <span class="flex flex-row gap-2 px-3 py-2 rounded-full items-center bg-ui-card hover:bg-ui-hover">
+          <div class="i-simple-icons-telegram text-xl" />
+          Telegram
+        </span>
+      </a>
+      <a target="_blank" href={site.contact.github} title="GitHub">
+        <span class="flex flex-row gap-2 px-3 py-2 rounded-full items-center bg-ui-card hover:bg-ui-hover">
+          <div class="i-simple-icons-github text-xl" />
+          GitHub
+        </span>
+      </a>
+    </div>
+  </section>
+</MainLayout>

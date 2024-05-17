@@ -1,0 +1,49 @@
+---
+import type { GetStaticPaths } from 'astro'
+import { getLocalesPlaceholder, type Locale } from 'i18n:astro'
+import { getLocalePlaceholder, setDynamicParams } from 'i18n:astro'
+import sitemap from 'i18n:astro/sitemap'
+
+import PostLayout from '~/layouts/PostLayout.astro'
+import { allPosts, hasPost, type Post, type PostSlug } from '~/lib/posts'
+
+type DynamicParams = {
+  [locale in Locale]?: { slug: PostSlug }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const locales = getLocalesPlaceholder()
+  const locale = getLocalePlaceholder()
+
+  return allPosts
+    .filter((post) => post.locale === locale)
+    .map((post) => {
+      const dynamicParams: DynamicParams = {}
+      for (const locale of locales) {
+        if (hasPost(post.slug, locale)) {
+          dynamicParams[locale] = { slug: post.slug }
+        }
+      }
+
+      sitemap({ dynamicParams })
+
+      return {
+        params: { slug: post.slug },
+        props: { post, dynamicParams },
+      }
+    })
+}
+
+interface Props {
+  post: Post
+  dynamicParams: DynamicParams
+}
+
+const { post, dynamicParams } = Astro.props
+setDynamicParams(dynamicParams)
+const { Content } = await post.render()
+---
+
+<PostLayout frontmatter={post.frontmatter}>
+	<Content />
+</PostLayout>

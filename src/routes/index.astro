@@ -1,0 +1,56 @@
+---
+import { getLocalePath, getLocalePlaceholder } from 'i18n:astro'
+
+import FormattedDate from '~/components/FormattedDate.astro'
+import HeroCode from '~/components/HeroCode.astro'
+import MainLayout from '~/layouts/MainLayout.astro'
+import { site } from '~/lib/consts'
+import { allPosts } from '~/lib/posts'
+
+const locale = getLocalePlaceholder()
+const posts = allPosts.filter((post) => post.locale === locale)
+---
+
+<MainLayout title={site.title} description={site.description}>
+  <ul class="flex flex-col gap-6">
+    {
+      posts.map((post) => (
+        <li>
+          <a href={getLocalePath("/posts/[slug]", { slug: post.slug })}>
+            <div class="card flex flex-col">
+              {post.frontmatter.heroImage ? (
+                <img class="w-full h-36 object-cover" src={post.frontmatter.heroImage} alt="Hero image" />
+              ) : post.frontmatter.heroCode ? (
+                <div class="w-full h-36 bg-ui-page flex justify-center items-center">
+                  <HeroCode heroCode={post.frontmatter.heroCode} />
+                </div>
+              ) : null}
+
+              <div class="flex flex-col p-4 md:p-8">
+                <div class="flex flex-row justify-between">
+                  <span class="font-bold line-clamp-1 flex-1 mr-2">
+                    {post.frontmatter.title}
+                  </span>
+                  <span class="text-sm italic text-ui-label-2">
+                    <FormattedDate date={post.frontmatter.pubDate} />
+                  </span>
+                </div>
+
+                <div class="flex flex-row justify-between mt-1">
+                  <span class="text-sm text-ui-label-2 line-clamp-2 flex-1 mr-2">
+                    {post.frontmatter.description}
+                  </span>
+                  <span class="flex flex-row gap-1 h-6">
+                    {post.frontmatter.tags.map((tag) => (
+                      <span class="px-2 py-1 bg-ui-hover text-xs text-ui-label-2 font-semibold rounded-full">{tag}</span>
+                    ))}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</MainLayout>

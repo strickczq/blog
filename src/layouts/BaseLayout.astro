@@ -1,0 +1,50 @@
+---
+import { ViewTransitions } from 'astro:transitions'
+import { getLocale } from 'i18n:astro'
+
+import '~/styles/markdown.css'
+import Meta from '~/components/Meta.astro'
+
+interface Props {
+  title: string
+  description: string
+  image?: string | undefined
+}
+
+const { title, description, image } = Astro.props
+
+const locale = getLocale()
+---
+
+<html lang={locale}>
+  <head>
+    <Meta
+      title={title}
+      description={description}
+      image={image}
+      locale={locale}
+    />
+    <ViewTransitions />
+    <script is:inline>
+      function initTheme() {
+        document.documentElement.classList.toggle('dark', (() => {
+          if (localStorage !== undefined) {
+            switch (localStorage.getItem('theme')) {
+              case 'dark': return true
+              case 'light': return false
+            }
+          }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches
+        })())
+      }
+
+      initTheme()
+      document.addEventListener('astro:page-load', () => {
+        initTheme()
+      })
+    </script>
+  </head>
+  <body class="transition-colors bg-ui-page text-ui-label font-sans">
+    <slot />
+  </body>
+</html>

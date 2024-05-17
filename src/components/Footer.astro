@@ -1,0 +1,40 @@
+---
+import { t } from 'i18n:astro'
+
+import { site } from '~/lib/consts'
+
+const now = new Date()
+const nowYear = now.getFullYear()
+---
+
+<footer
+  class:list={[
+    "flex flex-col w-full max-w-3xl",
+    "mx-auto",
+    "px-4 md:px-6 pb-[env(safe-area-inset-bottom)]",
+    "border-t border-ui-separator",
+  ]}
+>
+  <div class:list={[
+    "flex flex-row justify-between items-center", 
+    "h-12 md:h-14",
+    "text-xs text-ui-label-2"
+  ]}>
+    <div class="flex flex-row gap-1">
+      <span>&copy; {site.startYear} - {nowYear} {site.author}</span>
+    </div>
+
+    <div class="flex flex-row gap-3">
+      <span>{t('footer.powered-by')}</span>
+      <a target="_blank" href="https://vercel.com" title="Vercel">
+        <div class="i-simple-icons-vercel hover:text-ui-label-3" />
+      </a>
+      <a target="_blank" href="https://astro.build" title="Astro">
+        <div class="i-simple-icons-astro hover:text-ui-label-3" />
+      </a>
+      <a target="_blank" href="https://uno.antfu.me" title="UnoCSS">
+        <div class="i-simple-icons-unocss hover:text-ui-label-3" />
+      </a>
+    </div>
+  </div>
+</footer>

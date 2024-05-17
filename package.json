@@ -1,0 +1,45 @@
+{
+  "name": "blog",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.6.0",
+    "@astrojs/mdx": "^3.0.0",
+    "@astrojs/rss": "^4.0.5",
+    "@astrojs/solid-js": "^4.2.0",
+    "@giscus/solid": "^3.0.0",
+    "@nanostores/persistent": "^0.10.1",
+    "@nanostores/solid": "^0.4.2",
+    "astro": "^4.8.3",
+    "astro-seo": "^0.8.3",
+    "dayjs": "^1.11.11",
+    "nanostores": "^0.10.3",
+    "sharp": "^0.33.3",
+    "sharp-ico": "^0.1.5",
+    "solid-js": "^1.8.17"
+  },
+  "devDependencies": {
+    "@astrolicious/i18n": "^0.4.2",
+    "@biomejs/biome": "1.7.3",
+    "@iconify-json/eva": "^1.1.10",
+    "@iconify-json/simple-icons": "^1.1.101",
+    "@iconify-json/uil": "^1.1.8",
+    "@iconify/json": "^2.2.209",
+    "@unocss/postcss": "^0.60.2",
+    "@unocss/preset-icons": "^0.58.0",
+    "@unocss/preset-uno": "^0.58.0",
+    "@unocss/reset": "^0.58.0",
+    "@unocss/transformer-variant-group": "^0.58.0",
+    "i18next": "^23.11.4",
+    "typescript": "^5.4.5",
+    "unocss": "^0.58.0",
+    "unocss-preset-theme": "^0.12.0"
+  }
+}

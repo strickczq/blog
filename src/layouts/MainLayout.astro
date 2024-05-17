@@ -1,0 +1,40 @@
+---
+import Footer from '~/components/Footer.astro'
+import Header from '~/components/Header.astro'
+import HeroCode from '~/components/HeroCode.astro'
+import BaseLayout from '~/layouts/BaseLayout.astro'
+
+interface Props {
+  title: string
+  description: string
+  image?: string | undefined
+
+  heroImage?: string | undefined
+  heroCode?: string | undefined
+}
+
+const props = Astro.props
+const { heroImage, heroCode } = props
+---
+
+<BaseLayout {...props}>
+  <Header />
+  {heroImage ? (
+    <img class="w-full h-64 object-cover" src={heroImage} alt="Hero Image" />
+  ) : heroCode ? (
+    <div class="w-full h-64 bg-ui-page flex justify-center items-center">
+      <HeroCode heroCode={heroCode} />
+    </div>
+  ) : (
+    <div class="h-12" />
+  )}
+  <main class:list={[
+    "flex flex-col flex-grow-3",
+    "w-full max-w-3xl",
+    "mx-auto",
+    "p-4 md:p-6"
+  ]}>
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>

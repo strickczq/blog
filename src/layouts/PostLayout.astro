@@ -1,0 +1,45 @@
+---
+import FormattedDate from '~/components/FormattedDate.astro'
+import { PostComment } from '~/components/PostComment'
+import MainLayout from '~/layouts/MainLayout.astro'
+import type { Post } from '~/lib/posts'
+
+interface Props {
+  frontmatter: Post['frontmatter']
+}
+
+const { frontmatter } = Astro.props
+---
+
+<MainLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  heroImage={frontmatter.heroImage}
+  heroCode={frontmatter.heroCode}
+>
+  <section class="flex flex-col">
+    <h1 class="text-3xl font-bold my-4">{frontmatter.title}</h1>
+    <div class="flex flex-row gap-4 items-center">
+      <em class="text-sm text-ui-label-2 italic"><FormattedDate date={frontmatter.pubDate} /></em>
+      <span class="flex flex-row gap-1 h-6">
+        {frontmatter.tags.map((tag) => (
+          <span class="px-2 py-1 bg-ui-hover text-xs text-ui-label-2 font-semibold rounded-full">{tag}</span>
+        ))}
+      </span>
+    </div>
+  </section>
+
+  <hr class="my-8 border-t border-ui-separator" />
+
+  <section>
+    <article class="markdown">
+      <slot />
+    </article>
+  </section>
+
+  <hr class="my-8 border-t border-ui-separator" />
+
+  <section>
+    <PostComment client:only="solid-js" />
+  </section>
+</MainLayout>
